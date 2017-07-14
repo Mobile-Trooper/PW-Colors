@@ -1,7 +1,11 @@
 ColorPicker 2.0.0
 =====================
 
-**Custom Fieldtype/Inputfield for ProcessWire 2.+**
+** This is a fork from: [somatonic's PW ColorPicker](https://github.com/somatonic/ColorPicker) **
+We forked this to support processwire 3.0 since the original repository seems to be abandoned.
+This repository adresses a few problems with Repeater and RepeaterMatrix fields which previously rendered the colorpicker useless. We'll also add more features if our PW projects require them.
+
+**Custom Fieldtype/Inputfield for ProcessWire 3.+**
 
 This module gives you a new custom Fieldtype. Let's you select a color using a Colorpicker jQuery Plugin. The color selected will be stored in HEX format uppercase: "EAEAEA";
 
