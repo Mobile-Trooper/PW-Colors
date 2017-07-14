@@ -1,7 +1,8 @@
 ColorPicker 2.0.0
 =====================
 
-** This is a fork from: [somatonic's PW ColorPicker](https://github.com/somatonic/ColorPicker) **
+**This is a fork from: [somatonic's PW ColorPicker](https://github.com/somatonic/ColorPicker)**
+
 We forked this to support processwire 3.0 since the original repository seems to be abandoned.
 This repository adresses a few problems with Repeater and RepeaterMatrix fields which previously rendered the colorpicker useless. We'll also add more features if our PW projects require them.
 
