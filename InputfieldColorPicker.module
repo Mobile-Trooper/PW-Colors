@@ -5,6 +5,7 @@
  * used by the FieldtypeColorPicker
  *
  * created by Philipp "Soma" Urlich
+ * forked by Pascal Raszyk <posixpascal@googlemail.com> (Mobile Trooper GmbH)
  * ColorPicker jQuery Plugin by http://www.eyecon.ro/colorpicker/
  *
  * additions (swatches) by @Rayden
@@ -50,7 +51,7 @@ class InputfieldColorPicker extends Inputfield {
 
 		$out  = "\n<div id='ColorPicker_$this->name' style='border:2px solid #444; display:block;";
 		$out .= "width:40px; height:40px; background-color:";
-		$out .= $this->value == "transp"
+		$out .= $this->value == "transparent"
 				? $this->value . "; background-image:url({$this->config->urls->InputfieldColorPicker}transparent.gif);"
 				: "#" . $this->value . "; background-image:none";
 		$out .= "' data-color='" . $this->value . "'></div>";
@@ -76,7 +77,7 @@ class InputfieldColorPicker extends Inputfield {
 					$csvalue = trim($csvalue);
 					if($csvalue == "0") $csvalue = "000000";
 					$out .= "<li style='float:left; margin:0 4px 4px 0; border:1px solid #444; width:16px; height:16px; background-color:";
-					$out .= $csvalue == "transp"
+					$out .= $csvalue == "transparent"
 							? $csvalue . ";background-image:url({$this->config->urls->InputfieldColorPicker}transparent.gif);"
 							: "#" . $csvalue;
 					$out .= "'><div class='ColorPickerSwatch' href='#' data-color='{$csvalue}' style='width:16px;height:16px;display:block;cursor:pointer;' title='{$csvalue}'></div></li>";

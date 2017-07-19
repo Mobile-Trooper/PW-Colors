@@ -9,21 +9,21 @@
  *
  */
 
-$(function(){
-    $('div[id^=ColorPicker_]').each(function(){
+$(function() {
+    $('div[id^=ColorPicker_]').each(function() {
         var $colorpicker = $(this);
 
         $colorpicker.ColorPicker({
             color: $(this).data('color').toString(),
-            onShow: function (colpkr) {
+            onShow: function(colpkr) {
                 $(colpkr).fadeIn(500);
                 return false;
             },
-            onHide: function (colpkr) {
+            onHide: function(colpkr) {
                 $(colpkr).fadeOut(500);
                 return false;
             },
-            onChange: function (hsb, hex, rgb) {
+            onChange: function(hsb, hex, rgb) {
                 $colorpicker.css('backgroundColor', '#' + hex);
                 $colorpicker.css('background-image', 'none');
                 $colorpicker.next('input').val(hex).trigger('change');
@@ -32,16 +32,16 @@ $(function(){
 
     });
 
-    $('a.ColorPickerReset').on('click',function(e){
+    $('a.ColorPickerReset').on('click', function(e) {
         e.preventDefault();
-        var color = $(this).data('default') && $(this).data('default') != 'transp' ? '#' + $(this).data('default').toString() : 'transparent';
+        var color = $(this).data('default') && $(this).data('default') != 'transparent' ? '#' + $(this).data('default').toString() : 'transparent';
         $(this).parent().find('input').val($(this).data('default')).trigger('change');
         $(this).parent().find('div[id^=ColorPicker_]').ColorPickerSetColor($(this).data('default').toString());
         $(this).parent().find('div[id^=ColorPicker_]')
             .css('backgroundColor', color)
             .css('background-image', 'none')
             .attr('data-color', $(this).data('default').toString());
-        if(color == 'transparent') {
+        if (color == 'transparent') {
             var modurl = $(this).data('modurl');
             $(this).parent().find('div[id^=ColorPicker_]')
                 .css('background-image', 'url(' + modurl + 'transparent.gif)');
@@ -49,16 +49,16 @@ $(function(){
     });
 
     /* additions (swatches) by @Rayden */
-    $('div.ColorPickerSwatch').on('click',function(e){
+    $('div.ColorPickerSwatch').on('click', function(e) {
         e.preventDefault();
-        var color = $(this).data('color') && $(this).data('color') != 'transp' ? '#' + $(this).data('color').toString() : 'transparent';
+        var color = $(this).data('color') && $(this).data('color') != 'transparent' ? '#' + $(this).data('color').toString() : 'transparent';
         $(this).closest('.ui-widget-content, .InputfieldContent').find('input').val($(this).data('color')).trigger('change');
         $(this).closest('.ui-widget-content, .InputfieldContent').find('div[id^=ColorPicker_]').ColorPickerSetColor($(this).data('color').toString());
         $(this).closest('.ui-widget-content, .InputfieldContent').find('div[id^=ColorPicker_]')
             .css('backgroundColor', color)
             .css('background-image', 'none')
             .attr('data-color', $(this).data('color').toString());
-        if(color == 'transparent') {
+        if (color == 'transparent') {
             var modurl = $(this).closest('.ui-widget-content, .InputfieldContent').find('.ColorPickerReset').data('modurl');
             $(this).closest('.ui-widget-content, .InputfieldContent').find('div[id^=ColorPicker_]')
                 .css('background-image', 'url(' + modurl + 'transparent.gif)');

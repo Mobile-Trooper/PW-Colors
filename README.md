@@ -1,4 +1,4 @@
-ColorPicker 2.0.0
+ColorPicker 3.0.0
 =====================
 
 **This is a fork from: [somatonic's PW ColorPicker](https://github.com/somatonic/ColorPicker)**
@@ -34,6 +34,10 @@ The colorpicker used:
 [ColorPicker jQuery Plugin by Eyecon](http://www.eyecon.ro/colorpicker/)
 
 ### Changelog
+
+**3.0.0**
+
+- Forked from somatic and added support for Repeater(Matrix) FieldTypes
 
 **2.0.1**
 
@@ -96,5 +100,13 @@ box collapse with css. @Rayden
 - Done
 - You can now create a new field with the "ColorPicker" Fieldtype.
 
+### License
 
+```
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
 
+ Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+```

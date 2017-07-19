@@ -4,11 +4,12 @@
  * ProcessWire ColorPicker Fieldtype
  *
  * created by Philipp "Soma" Urlich
+ * forked by Pascal Raszyk <posixpascal@googlemail.com> (Mobile Trooper GmbH)
  * ColorPicker jQuery Plugin by http://www.eyecon.ro/colorpicker/
  *
  * additions (swatches) by @Rayden
  *
- * Licensed under LGPL3 http://www.gnu.org/licenses/lgpl-3.0.txt
+ * Licensed under GPL3 http://www.gnu.org/licenses/lgpl-3.0.txt
  *
  */
 
@@ -20,9 +21,9 @@ class FieldtypeColorPicker extends Fieldtype {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'ColorPicker',
-			'version' => 201,
-			'summary' => 'Fieldtype that stores a HEX color or the value transp. Color can be picked using a jQuery ColorPicker Plugin by http://www.eyecon.ro/colorpicker/ or from a configurable color swatch.',
-			'href' => 'http://processwire.com/talk/topic/865-module-colorpicker/page__gopid__7340#entry7340',
+			'version' => 300,
+			'summary' => 'Fieldtype that stores a HEX color or the value transparent. Color can be picked using a jQuery ColorPicker Plugin by http://www.eyecon.ro/colorpicker/ or from a configurable color swatch.',
+			'href' => 'https://github.com/Mobile-Trooper/PW-ColorPicker',
 			'installs' => 'InputfieldColorPicker'
 			);
 	}
@@ -61,7 +62,7 @@ class FieldtypeColorPicker extends Fieldtype {
 		if(!strlen($value)) return $value;
 		if(!$field->formatting) return $value;
 
-		if("transp" == strtolower($value)) return self::TRANSPARENT;
+		
 		if($value == "0") $value = "000000";
 
 		return self::HEX_PREFIX . $value;
@@ -81,7 +82,7 @@ class FieldtypeColorPicker extends Fieldtype {
 	 */
 	public function getDatabaseSchema(Field $field) {
 		$schema = parent::getDatabaseSchema($field);
-		$schema['data'] = 'CHAR(6) NOT NULL'; // i.e. FFFFFF or 333333 (hex color codes) or transp
+		$schema['data'] = 'CHAR(11) NOT NULL'; // i.e. FFFFFF or 333333 (hex color codes) or transp
 		return $schema;
 	}
 
@@ -97,7 +98,7 @@ class FieldtypeColorPicker extends Fieldtype {
 		$f->attr('size', 6);
 		$f->attr('value', $field->default);
 		$f->label = $this->_('Default Value');
-		$f->description = $this->_('Set the default HEX value or "transp" (transparent) for the field.');
+		$f->description = $this->_('Set the default HEX value or transparent for the field.');
 		$f->notes = $this->_('For example "EAEAEA". To have a blank value leave this field empty.');
 		$inputfields->append($f);
 
@@ -106,8 +107,8 @@ class FieldtypeColorPicker extends Fieldtype {
 		$f->attr('name', 'swatch');
 		$f->attr('value', $field->swatch);
 		$f->label = $this->_('Color Swatch');
-		$f->description = $this->_('Comma seperated HEX values or "transp" (transparent) to add color swatches for each.');
-		$f->notes = $this->_('For example "transp,FFFFFF,000000". Leave this field empty if you do not want to use the color swatch.');
+		$f->description = $this->_('Comma seperated HEX values or transparent to add color swatches for each.');
+		$f->notes = $this->_('For example "transparent,FFFFFF,000000". Leave this field empty if you do not want to use the color swatch.');
 		$inputfields->append($f);
 
 		$f = $this->modules->get("InputfieldCheckbox");
@@ -115,7 +116,7 @@ class FieldtypeColorPicker extends Fieldtype {
 		$f->attr('value', $field->formatting);
 		$f->attr('checked', $field->formatting ? 'checked' : '');
 		$f->label = $this->_('Turn on output formatting');
-		$f->description = $this->_('Enabling this turns on output formatting for this field. This will return the HEX value of the field already prefixed with "#" for convenience i.e "#FFAADD" and "transp" will be output as "transparent".');;
+		$f->description = $this->_('Enabling this turns on output formatting for this field. This will return the HEX value of the field already prefixed with "#" for convenience i.e "#FFAADD".');
 		$inputfields->append($f);
 
 		return $inputfields;
